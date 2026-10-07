@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="AI-архив Machine in the Shell" />
+    <title>Machine in the Shell — AI архив</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Навигация">
+        <a class="brand" href="#top" aria-label="Machine in the Shell">
+          <span class="brand-mark">M/</span>
+          <span>machine<br />in the shell</span>
+        </a>
+
+        <button class="new-chat" id="newChat" type="button">
+          <span>+</span> Новый запрос
+          <kbd>⌘ K</kbd>
+        </button>
+
+        <nav>
+          <p class="nav-label">История</p>
+          <button class="history-item active" type="button">Главное за неделю</button>
+          <button class="history-item" type="button">Что нового у OpenAI?</button>
+          <button class="history-item" type="button">AI-агенты для работы</button>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <div class="channel-status"><i></i> Архив обновлён 8 мин назад</div>
+          <a href="https://t.me/machineintheshell" target="_blank" rel="noreferrer">Открыть канал ↗</a>
+        </div>
+      </aside>
+
+      <main id="top">
+        <header class="topbar">
+          <div class="breadcrumbs"><span>АРХИВ</span><b>/</b><span>СПРОСИТЬ</span></div>
+          <button class="profile" type="button" aria-label="Профиль">АИ</button>
+        </header>
+
+        <section class="workspace">
+          <div class="conversation" id="conversation" aria-live="polite">
+            <div class="hero" id="hero">
+              <p class="eyebrow">@machineintheshell · база знаний</p>
+              <h1>Спросите у<br /><em>AI-архива.</em></h1>
+              <p class="lead">Находим ответы в публикациях канала, собираем контекст и всегда показываем, откуда взята информация.</p>
+              <div class="prompts" aria-label="Примеры запросов">
+                <button type="button" data-prompt="Главные новости AI за неделю">Главные новости AI за неделю <span>↗</span></button>
+                <button type="button" data-prompt="Какие модели вышли за последний месяц?">Какие модели вышли за месяц? <span>↗</span></button>
+                <button type="button" data-prompt="Расскажи про AI-агентов для разработки">AI-агенты для разработки <span>↗</span></button>
+              </div>
+            </div>
+          </div>
+
+          <section class="composer-wrap" aria-label="Введите запрос">
+            <form class="composer" id="askForm">
+              <textarea id="question" rows="1" placeholder="Например: что было важного в AI на этой неделе?" aria-label="Ваш запрос"></textarea>
+              <div class="composer-footer">
+                <button class="scope" type="button" id="scopeButton"><span class="spark">✦</span> Искать во всём архиве <span>⌄</span></button>
+                <div><span class="shortcut">⌘ Enter</span><button class="send" type="submit" aria-label="Отправить запрос">↑</button></div>
+              </div>
+            </form>
+            <p class="hint">Ответы формируются только на основе материалов канала.</p>
+          </section>
+        </section>
+      </main>
+
+      <aside class="sources-panel" id="sourcesPanel" aria-label="Источники">
+        <div class="sources-heading"><span>ИСТОЧНИКИ</span><span id="sourceCount">03</span></div>
+        <p class="sources-empty" id="sourcesEmpty">Источники к ответу появятся здесь.</p>
+        <div id="sourcesList" class="sources-list"></div>
+      </aside>
+    </div>
+
+    <template id="sourceTemplate">
+      <a class="source-card" target="_blank" rel="noreferrer">
+        <div class="source-meta"><span class="source-number"></span><span class="source-date"></span><span class="open-icon">↗</span></div>
+        <h3></h3>
+        <p></p>
+        <div class="tags"></div>
+      </a>
+    </template>
+    <script src="app.js"></script>
+  </body>
+</html>
